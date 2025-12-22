@@ -1,0 +1,21 @@
+name: 15 - Working with matrices 
+
+on: 
+    workflow_dispatch
+
+jobs:
+    backwards_compatibility:
+        name: ${{matrix.os }}-${{maxtrix.node-version}}
+        runs-on: ${{matrix.os}}
+        strategy:
+            matrix: 
+                node-version: [20.x , 21.x, 24.x]
+                os: 
+                    - ubunutu-latest
+                    - windows-latest
+            steps:
+                - name: SetUp node
+                  uses: actions/setup-node@v3
+                  with: ${{matrix.node-version }}
+                - name: Perform tests
+                  run: echo "Runing tests on OS ${{ maxtrix.os}} and NodeJS ${{maxtrix.node-version}}"
