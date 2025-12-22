@@ -16,4 +16,4 @@ jobs:
         steps:
             - name: echo data
               run: |
-              echo "Environment variable: ${{vars.MY_ENV_VALUE}}" 
+              echo "Environment Variable: ${{ vars.MY_ENV_VALUE }}"
