@@ -1,3 +1,6 @@
+# See 15-matrices/README.md for more information
+# about how to leverage matrices within workflows.
+
 name: 15 - Working with Matrices
 
 on:
@@ -8,12 +11,18 @@ jobs:
     name: ${{ matrix.os }}-${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        node-version: [18.x, 20.x, 21.x]
+        node-version: [18.x, 20.x, 24.x]
         os:
           - ubuntu-latest
           - windows-latest
+        include:
+          - os: ubuntu-latest
+            node-version: 24.x
+          - os: ubuntu-latest
+            node-version: 24.x
+            tag: experimental
     steps:
       - name: Setup node
         uses: actions/setup-node@v4
@@ -22,3 +31,4 @@ jobs:
       - name: Perform some tests
         run: |
           echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
+      
