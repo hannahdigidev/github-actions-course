@@ -11,8 +11,8 @@ inputs:
     default: .
     required: false
   target-env:
-    description: '"dev" or "prod". Controls whether dev dependencies are installed'
-    default: dev
+    description: '"staging" or "prod". Controls whether staging dependencies are installed'
+    default: staging
     required: false
 
 outputs:
