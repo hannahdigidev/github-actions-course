@@ -11,7 +11,7 @@ on:
         options:
           - 'https://www.bbc.co.uk'
           - 'https://www.invalid-dkjdkslfjlsda.com'
-          - 'https://example-test.com'
+          - 'https://adfjkldfjakjfdsakl'
       max_trials: 
         default: '10'
         required: false  
