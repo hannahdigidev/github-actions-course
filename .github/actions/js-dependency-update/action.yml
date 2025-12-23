@@ -1,0 +1,6 @@
+name: Update javascript dependencies
+descriptions: update package information 
+
+runs: 
+  using: node24
+  main: index.js 

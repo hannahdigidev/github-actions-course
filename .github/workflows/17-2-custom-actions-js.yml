@@ -1,0 +1,17 @@
+# See 17-custom-actions/README.md for more information
+# about how to create and use custom actions in workflows.
+
+name: 17 - 2 - Custom Actions - JS
+run-name: 17 - 2 - Custom Actions - JS 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check updates
+        id: setup-deps
+        uses: ./.github/actions/js-dependency-update
