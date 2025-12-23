@@ -30,7 +30,7 @@ def run():
     print("Hello world")
 
     if not website_reachable: 
-        raise exeception("Website {website_url} is malformed or unreachable")
+        raise Exeception("Website {website_url} is malformed or unreachable")
     
     print(f"website {website_url} is reachable")
 
