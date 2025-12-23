@@ -2,10 +2,10 @@ name: Ping URL
 description: Ping URL until maximum trails have exceed if results is not 200 until then fail the run
 
 inputs:
-  url:
+  url: 
     description: URL to ping 
     required: true
-  max_trials:
+  max_trials: 
     description: Max number of trials until action fails
     default: '10'
     required: false

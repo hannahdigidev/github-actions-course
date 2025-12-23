@@ -7,8 +7,17 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        type: string
-        default: 'https://www.bbc.co.uk'
+        type: choice
+        options:
+          - 'https://www.bbc.co.uk'
+          - 'https://www.invalid-dkjdkslfjlsda.com'
+          - 'https://example-test.com'
+      max_trials: 
+        default: '10'
+        required: false  
+      delay:
+        default: '5'
+        required: false
 
 
 jobs:
@@ -21,3 +30,5 @@ jobs:
         uses: ./.github/actions/docker-ping-url
         with:
           url: ${{ inputs.url}}
+          max_trials: ${{inputs.max_trials}}
+          delay: ${{inputs.delay}}
