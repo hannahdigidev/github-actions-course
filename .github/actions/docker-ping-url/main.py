@@ -2,7 +2,10 @@ import os
 import requests
 import time
 
-
+def set_output(file_path, key, value):
+    with open(file_path, 'a') as file
+    print(f'{key}={value}')
+ 
 def set_output(file_path, key, value):
     with open(file_path, 'a') as file:
         print(f'{key}={value}', file=file)
@@ -32,6 +35,8 @@ def run():
     website_url = os.getenv("INPUT_URL")
     delay = int(os.getenv("INPUT_DELAY"))
     max_trials = int(os.getenv("INPUT_MAX_TRIALS"))
+
+    set_output(os.getenv('GITHUB_OUTPUT'), 'url-reachable', website_reachable)
 
     website_reachable = ping_url(website_url, delay, max_trials)
 
