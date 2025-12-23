@@ -1,28 +1,40 @@
-name: 17 - custom actions - composite
+# See 17-custom-actions/README.md for more information
+# about how to create and use custom actions in workflows.
 
-on: 
-    workflow_dispatch:
+name: 17 - 1 - Custom Actions - Composite
+run-name: 17 - 1 - Custom Actions - Composite | env - ${{ inputs.target-env }}
 
-env: 
+on:
+  workflow_dispatch:
+    inputs:
+      target-env:
+        description: Which environment to target for dependency installation
+        type: choice
+        options:
+          - dev
+          - prod
+
+env:
   working-directory: 17-custom-actions/react-app
-
 jobs:
   build:
-    runs-on: ubunutu-latest
+    runs-on: ubuntu-latest
     defaults:
-      run: 
+      run:
         working-directory: ${{ env.working-directory }}
-    steps: 
-     - uses: actions/checkout@v4
-     - name: Setup Node and NPM Dependencies
-       uses: ./.github/actions/composite-cache-dependencies
-       with: 
-        node-version: 24.x
-        working-directory: ${{ env.working-directory }}
-     - name: Test
-       run: npm run test 
-       working-directory: 17-custom-actions/react-app
-     - name: build
-       run: npm run build 
-       working-directory: 17-custom-actions/react-app
-
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node and NPM Dependencies
+        id: setup-deps
+        uses: ./.github/actions/composite-cache-deps
+        with:
+          node-version: 24.x
+          working-dir: ${{ env.working-directory }}
+          target-env: ${{ inputs.target-env }}
+      - name: Print setup deps output
+        run: |
+          echo "Installed dependencies: ${{ steps.setup-deps.outputs.installed-deps }}"
+      - name: Test
+        run: npm run test
+      - name: Build
+        run: npm run build
