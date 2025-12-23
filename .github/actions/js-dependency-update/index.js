@@ -11,7 +11,7 @@ async function run() {
     const baseBranch = core.getInput('base-branch');
     const targetBranch = core.getInput('target-branch');
     const ghToken = core.getInput('gh-token');
-    const workingDir = core.getInput('working-dir');
+    const workingDir = core.getInput('working-directory');
     const debugInput = core.getBooleanInput('debug');
 
     core.setSecret('ghToken');
@@ -56,7 +56,7 @@ async function run() {
         1.4 . working dir for checking deps
     [ Done] - 2. execute npm update command in working dir
      3. - update workflow.
-     
+
      */
 
     core.info('I am a custom JS action');
