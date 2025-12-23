@@ -1,6 +1,25 @@
 name: Update javascript dependencies
 descriptions: update package information 
 
+inputs:
+  base-branch:
+    descriptions: branch used as the base for the update checks
+    default: main
+    required: false
+  target-branch:
+    descriptions: the branch that the pr is created
+    default: update-dependencies
+    required: false
+  working-dir:
+    descriptions: the working dir of the proj
+    required: true
+  gh-token:
+    descriptions: auth token and write access to content and PRs
+    required: true
+  debug:
+    descriptions: whether to output or not the information 
+    default: 'false'
+
 runs: 
   using: node24
   main: index.js 
